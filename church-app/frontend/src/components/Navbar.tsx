@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ImagePlaceholder from "./ImagePlaceholder";
+import logo from "../assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -18,13 +18,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-3">
           {/* Logo + church name stacked, per brief */}
           <NavLink to="/" className="flex flex-col items-center gap-1 shrink-0" onClick={() => setOpen(false)}>
-            <ImagePlaceholder
-              label="Church logo"
-              aspect="square"
-              className="w-12 h-12 rounded-full"
-            />
+            <img src={logo} alt="AIC Tharuni Church Logo" className="h-10 w-auto" />
             <span className="font-display text-sm sm:text-base font-semibold text-navy leading-none">
-              Grace Fellowship Church
+              AIC Tharuni Church
             </span>
           </NavLink>
 

@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="bg-navy text-cream">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid gap-10 sm:grid-cols-3">
         <div>
-          <p className="font-display text-lg font-semibold">Grace Fellowship Church</p>
+          <p className="font-display text-lg font-semibold">Aic Tharuni Church</p>
           <p className="mt-2 text-sm text-cream/70">
             A place to belong, believe, and become. Join us this week.
           </p>
@@ -57,7 +57,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-cream/10 py-4 text-center text-xs text-cream/50">
-        © {new Date().getFullYear()} Grace Fellowship Church. All rights reserved.
+        © {new Date().getFullYear()} Aic Tharuni Church. All rights reserved.
       </div>
     </footer>
   );
