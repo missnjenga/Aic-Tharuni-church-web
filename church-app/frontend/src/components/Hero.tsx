@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 
 import community from "../assets/community.jpg";
 
-
 const slides = [community];
 
+
+// Find it: YouTube Studio → Settings → Channel → Basic info → "Channel ID"
+const CHANNEL_ID = "UCXXXXXXXXXXXXXXXXXXXXXX";
+const CHANNEL_HANDLE = "@AICTharuniHephzibah";
+const CHANNEL_URL = `https://www.youtube.com/${CHANNEL_HANDLE}`;
+
 export default function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [showLiveModal, setShowLiveModal] = useState<boolean>(false);
 
   // Automatically change image every 5 seconds
   useEffect(() => {
@@ -17,6 +23,16 @@ export default function Hero() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    if (!showLiveModal) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowLiveModal(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [showLiveModal]);
 
   return (
     <section
@@ -86,6 +102,18 @@ export default function Hero() {
           >
             Give online
           </Link>
+
+          <button
+            onClick={() => setShowLiveModal(true)}
+            className="px-6 py-3 rounded-full font-semibold text-sm transition-colors flex items-center gap-2"
+            style={{ backgroundColor: "#B5533C", color: "#ffffff" }}
+          >
+            <span
+              className="inline-block h-2 w-2 rounded-full animate-pulse"
+              style={{ backgroundColor: "#ffffff" }}
+            />
+            Watch Live
+          </button>
         </div>
       </div>
 
@@ -105,6 +133,59 @@ export default function Hero() {
           />
         ))}
       </div>
+
+      {/* Live Sermon Popup Modal */}
+      {showLiveModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.75)" }}
+          onClick={() => setShowLiveModal(false)}
+        >
+          <div
+            className="relative w-full max-w-3xl rounded-lg overflow-hidden shadow-2xl"
+            style={{ backgroundColor: "#1a1a1a" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal header */}
+            <div className="flex items-center justify-between px-5 py-4">
+              <h3 className="font-display text-lg font-semibold text-white">
+                Live Sermon
+              </h3>
+              <button
+                onClick={() => setShowLiveModal(false)}
+                aria-label="Close live sermon"
+                className="text-white/70 hover:text-white text-2xl leading-none transition-colors"
+              >
+                &times;
+              </button>
+            </div>
+
+            {/* Video embed */}
+            <div className="aspect-video w-full">
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}`}
+                title="AIC Tharuni Hephzibah Church - Live Sermon"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+
+            {/* Footer link */}
+            <div className="px-5 py-4 flex justify-center">
+              <a
+                href={CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium"
+                style={{ color: "#f5deb3" }}
+              >
+                Watch on YouTube instead →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
