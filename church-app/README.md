@@ -4,7 +4,13 @@ A multi-page church website with a TypeScript React frontend and a
 TypeScript Express backend. Includes M-Pesa (Daraja STK push) giving,
 a categorized photo gallery, and content sections for service times,
 weekly fellowships, and church leadership.
-
+MPESA_CONSUMER_KEY=taLHsbAba45Kh1J5XQKZ3yLsjDCp9wvSUhwoR9eE0rXB2LeM
+MPESA_CONSUMER_SECRET=dAwbe3JsdoU269OkmXam9cLOTnzg3qBKS9KgAt4ApegAU6zOPRt6ytCfvD0GD3qY
+MPESA_SHORTCODE=174379
+MPESA_PASSKEY=bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
+MPESA_BASE_URL=https://sandbox.safaricom.co.ke
+MPESA_CALLBACK_URL= https://frecklier-rigoberto-unlaudably.ngrok-free.dev/api/mpesa/callback
+MPESA_ENVIRONMENT=sandbox
 ## Structure
 
 ```

@@ -5,11 +5,11 @@ import community from "../assets/community.jpg";
 
 const slides = [community];
 
-
+// TODO: Replace with your channel's numeric ID.
 // Find it: YouTube Studio → Settings → Channel → Basic info → "Channel ID"
-const CHANNEL_ID = "UCXXXXXXXXXXXXXXXXXXXXXX";
+const CHANNEL_ID = "UC87M_QrAQ0CaW985GuX0pBQ";
 const CHANNEL_HANDLE = "@AICTharuniHephzibah";
-const CHANNEL_URL = `https://www.youtube.com/${CHANNEL_HANDLE}`;
+const CHANNEL_URL = `https://www.youtube.com/channel/UC87M_QrAQ0CaW985GuX0pBQ${CHANNEL_HANDLE}`;
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
